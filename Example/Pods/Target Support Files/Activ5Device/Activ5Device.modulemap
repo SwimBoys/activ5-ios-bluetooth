@@ -1,0 +1,6 @@
+framework module Activ5Device {
+  umbrella header "Activ5Device-umbrella.h"
+
+  export *
+  module * { export * }
+}

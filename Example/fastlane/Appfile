@@ -1,0 +1,8 @@
+app_identifier("com.activbody.ios-ble-sdk") # The bundle identifier of your app
+apple_id("martinkuvandzhiev@gmail.com") # Your Apple email address
+
+itc_team_id("118051042") # App Store Connect Team ID
+team_id("82T8ZJ8YWR") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

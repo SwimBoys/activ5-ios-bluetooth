@@ -1,0 +1,39 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :build do
+    build_app(workspace: "Activ5-Device.xcworkspace", scheme: "Activ5-Device-Example", skip_package_ipa: true)
+  end
+
+  lane :tests do
+    #cocoapods(use_bundle_exec: true)
+    run_tests( 
+    include_simulator_logs: false,
+    code_coverage: true,
+    output_directory: "output/scan",
+    device: 'iPhone 11')
+    coverage
+  end
+  
+  lane :coverage do 
+    ENV["CODECOV_TOKEN"] = "c54072c9-143a-465f-82ed-fefb44785b80"
+    # sh("curl -s https://codecov.io/bash -o codecov.sh \&\& sh codecov.sh -J \"Dynamometer\" \&\& rm -f codecov.sh")
+    sh("curl -s https://codecov.io/bash -o codecov.sh \&\& sh codecov.sh \&\& rm -f codecov.sh")
+  end
+end

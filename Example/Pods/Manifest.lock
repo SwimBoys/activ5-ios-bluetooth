@@ -1,0 +1,16 @@
+PODS:
+  - Activ5Device (1.0.0)
+
+DEPENDENCIES:
+  - Activ5Device (from `../`)
+
+EXTERNAL SOURCES:
+  Activ5Device:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Activ5Device: de802661ccc1eb27ed8a13a8b9daec086b44b326
+
+PODFILE CHECKSUM: ce287237468234d2719116d8deb5a72d66cf6bad
+
+COCOAPODS: 1.8.1

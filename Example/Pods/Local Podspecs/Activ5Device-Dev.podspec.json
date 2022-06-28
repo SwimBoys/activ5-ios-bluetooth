@@ -1,0 +1,28 @@
+{
+  "name": "Activ5Device-Dev",
+  "version": "0.1.1",
+  "summary": "Framework used for connection with Activ5 Device",
+  "swift_versions": "4.2",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/ActivBody/activ5-ios-bluetooth.git",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "martinkey": "martinkuvandzhiev@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/ActivBody/activ5-ios-bluetooth.git",
+    "tag": "0.1.1"
+  },
+  "platforms": {
+    "tvos": "10.0",
+    "ios": "10.0"
+  },
+  "source_files": "Activ5-Device/Classes/**/*",
+  "frameworks": [
+    "CoreBluetooth",
+    "Foundation"
+  ]
+}

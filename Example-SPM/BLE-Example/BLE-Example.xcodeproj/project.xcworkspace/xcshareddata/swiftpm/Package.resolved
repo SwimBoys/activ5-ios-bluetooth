@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Activ5Device",
+        "repositoryURL": "https://github.com/ActivBody/activ5-ios-bluetooth",
+        "state": {
+          "branch": "develop",
+          "revision": "6b553fb2a2aa2c6798397c3552780b8574ec665e",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,42 @@
+name: Release XC Framework
+
+on:
+  push:
+    branches: [ develop, master ]
+    
+jobs:
+  create-xcframework:
+    runs-on: [self-hosted, macos]
+    env:
+      commitmsg: ${{ github.event.head_commit.message }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Make framework build file executable
+      run: chmod +x build_xcframework.sh
+    - name: Build Framework
+      run: ./build_xcframework.sh
+    - name: Upload framework to the closed source repo
+      run: |
+        echo ${GITHUB_REF}
+        LAST_COMMIT_MESSAGE="$(git log --format=%s -n 1 HEAD | tail)"
+        echo $LAST_COMMIT_MESSAGE
+        
+        git clone https://x-access-token:${{ secrets.API_TOKEN_GITHUB }}@github.com/ActivBody/Activ5-iOS-SDK.git Activ5-iOS-SDK
+        cd Activ5-iOS-SDK
+        git checkout ${GITHUB_REF##*/}
+        
+        rm -rf Activ5Device.xcframework
+        cp -R ../Activ5Device.xcframework ./Activ5Device.xcframework
+        
+        rm README.md
+        cp ../README.md ./README.md
+        
+        git add .
+        git commit -m "${LAST_COMMIT_MESSAGE}"
+        git push --set-upstream origin ${GITHUB_REF##*/}
+        git push
+    - name: Upload xcframework as artefact
+      uses: actions/upload-artifact@v2
+      with:
+          name: activ5-ios-bluetooth.xcframework
+          path: Activ5Device.xcframework
